@@ -1,3 +1,14 @@
+""" 
+This program randomly assigns each specific project from a specific person to a
+random week using a custom .csv. For the format refer to the readme.md in the
+repository which can be found here: 
+
+https://github.com/Koltonix/random-task-sorter
+"""
+
+__author___ = "Christopher Robertson"
+__copyright___ = "MIT License Copyright (c) 2020"
+
 import csv
 import math
 import random

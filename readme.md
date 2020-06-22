@@ -8,6 +8,17 @@ I said I was going to sort through an excel sheet and each week take some projec
 - Python 3.7
 
 ## Details
-I'll update this area once I've finished, but my idea is to have all of the data in the csv with each line starting with their name and then all of the data. From there I will collect every bit of data - store it with the name - and then randomly pick x amount per week for y weeks. This will then print nicely into another csv. 
+- All you need to provide is a .csv file in the format as shown below. 
+- Then correct the file directory in the code.
+- From there you specify the number of weeks.
+- **Note:** any excess data is added as NULL at the end; this will be caused due to there being too few projects.
 
-He says.
+Data Input:
+|Name       |Data       |Data       |Data      |
+|-----------|-----------|-----------|----------|
+|Christopher|Project One|Project Two|Project...|
+
+Data Output:
+|Name       |Data                   |Data                   |Data                   |
+|-----------|-----------------------|-----------------------|-----------------------|
+|Week[x]    |Randomly Chosen Project|Randomly Chosen Project|Randomly Chosen Project|
