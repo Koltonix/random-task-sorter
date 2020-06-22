@@ -2,7 +2,7 @@
 # Random Task Sorter (RTS)
 
 ## Description
-I said I was going to sort through an excel sheet and each week take some projects people were happy to present and sort them evenly across the weeks. But I'm lazy and can program just about. Also I want to go back to Python because why not.
+I said I was going to sort through an excel sheet and each week take some projects people were happy to present and sort them evenly across the weeks, but I'm lazy and can program. Also I want to go back to Python because why not.
 
 ## Information
 - Python 3.7
