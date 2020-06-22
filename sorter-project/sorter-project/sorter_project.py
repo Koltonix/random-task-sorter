@@ -16,7 +16,28 @@ def main():
     projects_per_week = math.ceil(get_projects_length(people) / weeks)
     all_projects = get_all_projects(people)
 
-    print(get_random_project(all_projects))
+    projects_per_week = sort_per_week(weeks, projects_per_week, all_projects)
+    print_schedule(projects_per_week)
+
+
+def print_schedule(projects_each_week):
+    for projects in projects_each_week:
+        print(projects)
+
+
+def sort_per_week(weeks, projects_per_week, all_projects):
+    projects_each_week = []
+    
+    for i in range(0, weeks):
+        projects = []
+        for j in range(0, projects_per_week):
+          
+            projects.append(get_random_project(all_projects))
+
+        projects_each_week.append(projects)
+
+    return projects_each_week
+
 
 """Example of a Line: ['Christopher R.', 'Lego Mindstorm BS', 'COMP110 - SPACECHEM']"""
 def get_data():
@@ -33,6 +54,7 @@ def get_data():
 
     return people
 
+
 """Sets and returns a Person class for grouping the data"""
 def assign_person(details):
     name = details[0]
@@ -40,6 +62,7 @@ def assign_person(details):
     details.remove(name)
     person = Person(name, details)
     return person
+
 
 """Returns the total amount of projects from everyone"""
 def get_projects_length(people):
@@ -49,6 +72,8 @@ def get_projects_length(people):
 
     return amount
 
+
+"""Gets all of the projects in a list"""
 def get_all_projects(people):
     all_projects = []
     for person in people:
@@ -57,13 +82,18 @@ def get_all_projects(people):
 
     return all_projects
 
+
+"""Gets a random project and then removes it from all of the projects"""
 def get_random_project(all_projects):
-    random_value = random.randrange(0, len(all_projects))
+    if (len(all_projects) <= 0):
+        return None
 
-    project = all_projects[random_value]
-    all_projects.remove(project)
+    else:
+        random_value = random.randrange(0, len(all_projects))
+        project = all_projects[random_value]
+        all_projects.remove(project)
 
-    return project
+        return project
     
 
 main();
