@@ -17,7 +17,15 @@ def main():
     all_projects = get_all_projects(people)
 
     projects_per_week = sort_per_week(weeks, projects_per_week, all_projects)
-    print_schedule(projects_per_week)
+    save_schedule(projects_per_week)
+
+
+def save_schedule(projects_per_week):
+    with open('data/schedule.csv', 'w') as new_file:
+        csv_writer = csv.writer(new_file)
+        for week in projects_per_week:
+            csv_writer.writerow(week)
+    print("Saved Schedule to:\ndata/schedule.csv")
 
 
 def print_schedule(projects_each_week):
@@ -30,6 +38,8 @@ def sort_per_week(weeks, projects_per_week, all_projects):
     
     for i in range(0, weeks):
         projects = []
+        projects.append("WEEK " + str(i + 1))
+
         for j in range(0, projects_per_week):
           
             projects.append(get_random_project(all_projects))
@@ -78,7 +88,7 @@ def get_all_projects(people):
     all_projects = []
     for person in people:
         for item in person.projects:
-            all_projects.append(item)
+            all_projects.append([person.name, item])
 
     return all_projects
 
