@@ -22,9 +22,9 @@ all_projects = []
 
 def main():
     weeks = int(input("How many weeks will this be over the course of?\n"))
+    projects_per_week = int(input("Amount of Projects Each Week?\n"))
     people = get_data()
 
-    projects_per_week = math.ceil(get_projects_length(people) / weeks)
     all_projects = get_all_projects(people)
 
     projects_per_week = sort_per_week(weeks, projects_per_week, all_projects)
@@ -52,8 +52,11 @@ def sort_per_week(weeks, projects_per_week, all_projects):
         projects.append("WEEK " + str(i + 1))
 
         for j in range(0, projects_per_week):
-          
-            projects.append(get_random_project(all_projects))
+            project = get_random_project(all_projects, projects)
+            if (project == None):
+                continue
+
+            projects.append(project)
 
         projects_each_week.append(projects)
 
@@ -105,16 +108,33 @@ def get_all_projects(people):
 
 
 """Gets a random project and then removes it from all of the projects"""
-def get_random_project(all_projects):
+def get_random_project(all_projects, current_projects):
     if (len(all_projects) <= 0):
         return None
 
-    else:
+    project = None
+    crash_counter = 0
+
+    while (project == None):
         random_value = random.randrange(0, len(all_projects))
         project = all_projects[random_value]
-        all_projects.remove(project)
 
-        return project
+        if (check_for_duplicate(project[0], current_projects)):
+            project = None
+            crash_counter += 1
+
+        if(crash_counter > len(all_projects)):
+            return None
+
+    all_projects.remove(project)
+
+    return project
     
+def check_for_duplicate(element, list):
+    for i in range(0, len(list)):
+        if element == list[i][0]:
+            return True
+
+    return False
 
 main();
